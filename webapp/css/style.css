@@ -1,0 +1,13 @@
+/* Enter your custom styles here */
+@import "home.css";
+html,
+body,
+body > div,
+div,
+#container,
+#container-uiarea {
+  direction: ltr;
+}
+.sapMList {
+  direction: rtl;
+}

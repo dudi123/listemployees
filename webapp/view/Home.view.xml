@@ -1,0 +1,149 @@
+<mvc:View
+    controllerName="zlistemployees.controller.Home"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:table="sap.ui.table"
+>
+    <!-- MAIN SCREEN -->
+    <VBox
+        id="homeContainer"
+        class="homeContainer"
+    >
+        <!-- TITLE CONTAINER -->
+        <core:Fragment
+            fragmentName="zlistemployees.fragments.HeaderTitle"
+            type="XML"
+        />
+    
+        <!-- TABLE -->
+        <HBox
+            id="bodyHbox"
+            class="bodyHbox"
+        >
+            <!-- ICON TAB -->
+           <HBox class="iconTabHbox">
+                <IconTabBar
+                    id="icons"
+                    class="icons"
+                    select="switchTab"
+                    selectedKey="myEmployees"
+                >
+                    <items> 
+                        <IconTabFilter
+                            key="approvedCommander"
+                            text="{i18n>approvedCommander}"
+                            class="tabText"
+                        /> 
+                         <IconTabFilter
+                            key="wardensApprovedAbsences"
+                            text="{i18n>wardensApprovedAbsences}"
+                            class="tabText"
+                        />
+                         <IconTabFilter
+                            key="wardensAbsencesForHumanResourcesApproval"
+                            text="{i18n>wardensAbsencesForHumanResourcesApproval}"
+                            class="tabText"
+                        /> 
+                        <IconTabFilter
+                            key="awaitingCommanderApproval"
+                            text="{i18n>awaitingCommanderApproval}"
+                            class="tabText"
+                        /> 
+                         <IconTabFilter
+                            key="awaitingWardenApproval"
+                            text="{i18n>awaitingWardenApproval}"
+                            class="tabText"
+                        />  
+                        <IconTabFilter
+                            key="myEmployees"
+                            text="{i18n>myEmployees}"
+                            class="tabText"
+                        />                               
+                    </items>
+                </IconTabBar>
+            </HBox>
+             
+            <VBox
+                id="tableVbox"
+                class="tableVbox"
+                width="100%"
+            >
+                 <HBox class="tbl">
+                    <Table items="{path: 'oData>/'}">
+                        <columns>
+                            <Column width="8vw" hAlign="Right">
+                                <Label class="header-tbl-lbl" text="{i18n>workingNumber}" />
+                            </Column>
+                            <Column  width="8vw" hAlign="Right" >
+                                <Label class="header-tbl-lbl" text="{i18n>firstName}" />
+                            </Column>
+                            <Column  width="8vw"  hAlign="Right" >
+                                <Label class="header-tbl-lbl" text="{i18n>lastName}" />
+                            </Column>
+                            <Column  hAlign="Right" width="7vw" >
+                                <Label class="header-tbl-lbl" text="{i18n>organizationalUnit}" />
+                            </Column>
+                            <Column hAlign="Right" width="7vw">
+                                <Label class="header-tbl-lbl" text="{i18n>commander}" />
+                            </Column>
+                             <Column hAlign="Right" width="7vw">
+                                <Label class="header-tbl-lbl" text="{i18n>aMSOfficer}" />
+                            </Column>                           
+                            <Column hAlign="Right" width="8vw"> 
+                                <Label class="header-tbl-lbl" text="{i18n>group}" />
+                            </Column>
+                            <Column hAlign="Right" width="9vw">
+                                <Label class="header-tbl-lbl" text="{i18n>groupDescription}" />
+                            </Column>
+                            <Column hAlign="Right" width="9vw">
+                                <Label class="header-tbl-lbl" text="{i18n>subsetDescription}" />
+                            </Column>
+                           
+                        </columns>
+                        <items>
+                            <ColumnListItem vAlign="Middle">
+                                <cells>
+                                    <VBox >
+                                        <Link text="{oData>workingNumber}" />
+                                    </VBox>
+                                    <VBox >
+                                        <Text text="{oData>firstName}" />
+                                    </VBox>
+                                    <VBox>
+                                        <Text text="{oData>lastName}" />
+                                    </VBox>
+                                    <VBox>
+                                        <Text text="{oData>organizationalUnit}" />
+                                    </VBox>
+                                    <VBox>
+                                        <Text text="{oData>commander}" />
+                                    </VBox>
+                                    <VBox>
+                                        <Text text="{oData>aMSOfficer}" />
+                                    </VBox>
+                                    <VBox>
+                                        <Text text="{oData>group}" />
+                                    </VBox>
+                                    <VBox>
+                                        <Text
+                                            text="{oData>groupDescription}"
+                                        />
+                                    </VBox>
+                                    <VBox>
+                                        <Text
+                                            text="{oData>subsetDescription}"
+                                        />
+                                    </VBox> 
+                                    
+                                </cells>
+                            </ColumnListItem>
+                        </items>
+                    </Table>
+                </HBox>
+                
+             </VBox>
+        </HBox>
+    </VBox>
+</mvc:View>
